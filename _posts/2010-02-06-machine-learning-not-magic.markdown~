@@ -1,0 +1,59 @@
+#Hello, World!
+
+##Introduction
+
+I'm Aaron.  A while ago, I graduated from UC Berkeley with a degree in Cognitive Science, and started work as a software engineer doing search analytics at A9 in Palo Alto.  I'm interested in machine learning and in particular in the directions that Bayesian nonparametrics and work on stochastic/probabilistic programming are going.  When I'm not focused on technical issues, I like eating and reading food blogs, and neglecting my piano.
+
+##Motivation
+
+I'm starting the blog because I can't stand to have all my coding be at work.  This practice causes lots of obvious frustrations:
+* I conflate my frustration with work with my frustration with programming, and am starting to lose sight of the fun in playing with code
+* I don't get to talk about any of my projects with the outside world.  Because A9 doesn't have a public facing service, many people think it's either dead, or one of the projects that Bezos doesn't have the heart to kill.  This means that if I don't have something other than A9 to tie my professional/technical name to, I may be seen as a poor engineer at a useless, irrelevant company.
+* My work projects aren't playful.  Because our data is so big, many fun things become impractical.  Because our schedule is so tight, there's relatively little room for exploration
+* My projects don't help me learn.  I want to learn new tools and new languages.  I want to learn new math and new tricks.  
+
+##Goals
+
+* I want this blog to be a place where I post things that I've done, and invite other people to comment, question, share, improve, discuss, etc.  This should not be a place where I just comment on things other people have said, rant, or just post links.  
+* I want most of my projects to find a way to do something cool with data.
+* I don't require all of my contributions to be original.  In fact, I think there's a lot I could learn from implementing classic stuff that other people have pioneered; other people could also benefit from seeing a slowed-down tutorial on how some of the fancy things I want to learn about work.
+* I'd like to have at least some of my posts be teaching/tutorial posts.  This may be a presumptuous goal; I'm a newcomer to a lot of the things I'm interested in, but I've been told alternatively that the best way to learn something is to a) implement it from scratch or b) teach it.  For somethings, I hope to do both
+
+##What's with the name?
+
+A very smart person very close to me didn't get the joke.  See [here](http://en.wikipedia.org/wiki/Spherical_cow).
+
+##First Post : Machine learning is not magic
+
+A lot of machine learning has to do with learning functions.  A lot of the time, it's easy to think of learning these functions as either doing regression when the output variable of the function is a numerical value, or doing categorization when the dependent variable is discrete without any real ordering.  For the case of numerical dependent variables, the tutorial/textbook/lecture presentation tend to be "we have a univariate function $f$ where for some set of data $x_1 \ldots x_n$ we know the values $f(x_1) \ldots f(x_n)$.  Now given these $x$ we get univariate function $\hat{f}$ by \ldots".  Then you show them the results of a bunch of reasonable approaches thrown at the problem, and they all look ok at the beginning, and pretty good by the end. 
+
+From the perspective of merely giving people an understanding of what's going on in the algorithms, this approach is fine.  But I think it introduces a problem where people think these approaches are more powerful than they are.  The simple example "works" for several reasons which may not be true of real applications :
+- The function $f$ is simple (but not too simple), and often real-world processes which create data will be much more complicated
+- The function $f$ is solely informed by the values in the data, but in real life you may be missing valuable data
+- The dimension is small, so there's enough data to go around.  When the dimension is high for many of the points you try to make predictions about, there will be no observed datapoint nearby to help you.
+
+Just giving an example that breaks isn't really interesting. And examples in a high number of dimensions 
+
+Images are functions, where the argument is a location on a grid, and the value is the color at that point.  While I think it's pretty common in machine learning/statistical learning texts to introduce ideas by first talking about a univariate function underlying a bunch of datapoints, I thought (and this probably isn't new) it would be cool to try to harness people's innate ability to see and understand images to help them understand how different attempts at function learning work.  On the way I hope to make a couple of points about the powers and limitations of machine learning.  But first let me give due credit to [the java KD-tree](http://www.cs.wlu.edu/~levy/software/kd/ "java KD-tree") I used for this.
+
+![Me at the Louvre, summer 2009](  "")
+
+In the above image, going left to right, you see the results of doind plain Nearest Neighbor, K Nearest Neighbor (with k=3) and K Nearest Neighbor with some smoothing.  (In the next post, I wan to do a Gaussian process and a mixture model)  And of course, top to bottom represents more to less data.  In particular, in each case I walked over the whole picture and included each pixel with some probability p, where in the top row p = 0.1 * 0.5^7 and in the bottom row p = 0.1, and each row in between differs from those above an below by a factor of two.  
+
+With the image above, I want to make a few points:
+
+1. In general, your models are wrong.  Sometimes your data actually works according to a clean model -- maybe your robot is navigating with distance sensors that really do have normal noise, for instance. But for netflix and your credit card company and everyone trying to do inference using data that comes from people, your model is probably wrong.  
+
+When a human looks at the pictures on the bottom row, they're bringing a life's worth of domain knowledge to the table to understand it.  It's not just a map of (x,y) pairs to (r, g, b) values; it's a kid standing in front of a statue.  But the simple nearest neighbor model, and the fancy dirichlet mixture model, or some modified Ising model that make a straight-forward effort to just learn this as a picture are poor in that they don't have a concept of this function being a 2d image of a 3d world where solid objects are seen under light, let alone concepts of sphynxes or tourists or hair or eyes.
+
+A while ago I worked on what we called a "click model".  Of course, I can't go into details, but at the high level, if a user searches for something, and gets back a list of results and clicks on only one of them, there's a tricky inference process about how this observation informs our understanding of the relevance of each of the returned results to the given query.  But really, you're trying to write a model of user behavior, and inevitably there are a huge number of factors which affect that behavior which your system can't consider.
+
+2. Machine learning can't aspire to be magic.  It's just common sense.  A lot of people who have an idea of what machine learning is, but who haven't actually worked on it much (and even some of us who have) tend to strongly over-estimate its powers.  But the bottom line is sometimes there simply isn't enough data to really learn the underlying material.  No matter how smart your algorithms or your human visual system, given the very small amount of data in the top row of images, there's no realistic way that you could really 'learn' what's going on in the rest of the picture.  
+
+But often machine learning is common sense.  The methods used above are all based on the assumption that things in the neighborhood of a datapoint will probably look like that datapoint.  This is a pretty reasonable assumption -- you have relatively little information, but the information that's most relevant to you is probably from the most similar cases you've already observed.
+
+3. Sometimes the problem is just straight easy.  This is the opposite of the above point.  When you're in a problem where you have a large, random proportion of the whole population of things that you could possibly see, then even the most simple algorithms like the ones will do a reasonable job of predicting missing values (provided you're not training it on what is and isn't in the Mandelbrot set).  Don't get me wrong -- a better algorithm might do somewhat better on these predictions, and by a reasonable error metric the improvement will be noticeable.  But the stupid algorithm will also be in the ballpark.
+
+4. From the above two points, it would be tempting to say that supervised machine learning, and tasks like function learning or classification only can make meaningful improvements in some Goldilocks space of problems where where have enough data, but not too much.  But of course, what this misses is that how much data you have is relative to how big your space is, which is dependent on how you decide to represent your problem.
+
+For instance, a language model trained on a bunch of sentences can really think of itself as having data dimension is |V|^l where V is the vocabulary size and l is the longest sentence.  However an n-gram language model operates by picking some n < l and reconfiguring its data to be points of dimension |V|^n, and instead of predicting the next word given the whole previous part of the sentence, it can just predict given the last n words.

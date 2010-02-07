@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" type="text/css" href="/css/default.css" />
+  <head>
+    <title>Aaron's spherical cow : explorations in modeling the world - Aaron's Spherical Cow</title>
+  </head>
+
+  <body>
+    <div id="home">
+<h1><a href="/">aaron's spherical cow</a></h1>
+
+<div id="post">
+  <h2><a href="/2010/02/06/machine-learning-is-not-magic.html">machine learning is not magic!</a></h2>
+  <div id="date">published 06 Feb 2010</div>
+  <h2 id='introduction_hello_world'>Introduction (hello, world)</h2>
+
+<p>I&#8217;m Aaron. A while ago, I graduated from UC Berkeley with a degree in Cognitive Science, and started work as a software engineer doing search analytics at A9 in Palo Alto. I&#8217;m interested in machine learning and in particular in the directions that Bayesian nonparametrics and work on stochastic/probabilistic programming are going. When I&#8217;m not focused on technical issues, I like eating, reading (vegetarian/vegan) food blogs, and neglecting my piano.</p>
+
+<h2 id='motivation'>Motivation</h2>
+
+<p>I&#8217;m starting the blog because I can&#8217;t stand to have all my coding be at work. This practice causes lots of obvious frustrations:</p>
+
+<ul>
+<li>I conflate my frustration with work with my frustration with programming, and am starting to lose sight of the fun in playing with code</li>
+
+<li>I don&#8217;t get to talk about any of my projects with the outside world. Because A9 doesn&#8217;t have a public facing service, many people think it&#8217;s either dead, or one of the projects that Bezos doesn&#8217;t have the heart to kill. This means that if I don&#8217;t have something other than A9 to which I can tie my professional/technical name and reputation, I may be seen as a poor engineer at a useless, irrelevant company.</li>
+
+<li>My work projects aren&#8217;t playful. Because our data is so big, many fun things become impractical. Because our schedule is so tight, there&#8217;s relatively little room for exploration (or at least not as much as I&#8217;d like).</li>
+
+<li>My projects don&#8217;t help me learn. I want to learn new tools and new languages. I want to learn new math and new tricks.</li>
+</ul>
+
+<h2 id='goals'>Goals</h2>
+
+<ul>
+<li>I want this blog to be a place where I post things that I&#8217;ve done, and invite other people to comment, question, share, improve, discuss, etc. This should not be a place where I just comment on things other people have said, rant, or just post links.</li>
+
+<li>I want most of my projects to find a way to do something cool with data.</li>
+
+<li>I don&#8217;t require all of my contributions to be original. In fact, I think there&#8217;s a lot I could learn from implementing classic stuff that other people have pioneered; other people could also benefit from seeing a slowed-down tutorial on how some of the fancy things I want to learn about work.</li>
+
+<li>I&#8217;d like to have at least some of my posts be teaching/tutorial posts. This may be a presumptuous goal; I&#8217;m a newcomer to a lot of the things I&#8217;m interested in, but I&#8217;ve been told alternatively that the best way to learn something is to a) implement it from scratch or b) teach it. For somethings, I hope to do both</li>
+</ul>
+
+<h2 id='whats_with_the_name'>What&#8217;s with the name?</h2>
+
+<p>For people who aren&#8217;t familiar with the joke, see <a href='http://en.wikipedia.org/wiki/Spherical_cow'>here</a>.</p>
+
+<h2 id='first_post__machine_learning_is_not_magic'>First Post : Machine learning is not magic</h2>
+
+<p>A lot of machine learning has to do with learning functions. A lot of the time, it&#8217;s easy to think of learning these functions as either doing regression when the output variable of the function is a numerical value, or doing categorization when the dependent variable is discrete without any real ordering. For the case of numerical dependent variables, the tutorial/textbook/lecture presentation tend to be &#8220;we have a univariate function <span class='maruku-inline'><img class='maruku-png' src='/images/latex/703972bd59b896af93e37142cf76fdd5.png' alt='$f$' style='vertical-align: -0.444444444444444ex;height: 2.0ex;' /></span> where for some set of data <span class='maruku-inline'><img class='maruku-png' src='/images/latex/b873261d08bc22eebcb0ebbd6733d888.png' alt='$x_1 \ldots x_n$' style='vertical-align: -0.444444444444444ex;height: 1.44444444444444ex;' /></span> we know the values <span class='maruku-inline'><img class='maruku-png' src='/images/latex/8233577d12b64afd70f1e77cd35ee1b0.png' alt='$f(x_1) \ldots f(x_n)$' style='vertical-align: -0.555555555555556ex;height: 2.33333333333333ex;' /></span>. Now given these <span class='maruku-inline'><img class='maruku-png' src='/images/latex/d7c817bcd91b45d2e83059cbc1fbfb32.png' alt='$x$' style='vertical-align: -0.0ex;height: 1.0ex;' /></span> we get univariate function <span class='maruku-inline'><img class='maruku-png' src='/images/latex/385da62b72d0d7c12f5b7c65a6244334.png' alt='$\hat{f}$' style='vertical-align: -0.444444444444444ex;height: 2.55555555555556ex;' /></span> by <span class='maruku-inline'><img class='maruku-png' src='/images/latex/3d35e43da2c81161bdff7102ae21c102.png' alt='$\ldots$' style='vertical-align: -0.0ex;height: 0.222222222222222ex;' /></span>&#8221;. Then you show them the results of a bunch of reasonable approaches thrown at the problem, and they all look ok at the beginning, and pretty good by the end.</p>
+
+<p>From the perspective of merely giving people an understanding of what&#8217;s going on in the algorithms, this approach is fine. But I think it introduces a problem where people think these approaches are more powerful than they are. The simple &#8220;works&#8221; for several reasons which may not be true of real applications :</p>
+
+<ul>
+<li>The function <span class='maruku-inline'><img class='maruku-png' src='/images/latex/703972bd59b896af93e37142cf76fdd5.png' alt='$f$' style='vertical-align: -0.444444444444444ex;height: 2.0ex;' /></span> is simple (but not too simple), and often real-world processes which create data will be much more complicated</li>
+
+<li>The function <span class='maruku-inline'><img class='maruku-png' src='/images/latex/703972bd59b896af93e37142cf76fdd5.png' alt='$f$' style='vertical-align: -0.444444444444444ex;height: 2.0ex;' /></span> is solely informed by the values in the data, but in real life you may be missing valuable data</li>
+
+<li>The dimension is small, so there&#8217;s enough data to go around. When the dimension is high for many of the points you try to make predictions about, there will be no observed datapoint nearby to help you.</li>
+</ul>
+
+<p>My first thought was to try to provide a category of examples where many strategies will fail &#8211; but this isn&#8217;t particularly interesting (e.g. provide too few datapoints and have a function with some narrow peaks, ridges or valleys). Instead, I thought it would be fun to work with images. Images can be cast as functions where <span class='maruku-inline'><img class='maruku-png' src='/images/latex/d7c817bcd91b45d2e83059cbc1fbfb32.png' alt='$x$' style='vertical-align: -0.0ex;height: 1.0ex;' /></span> is just the location of a pixel and <span class='maruku-inline'><img class='maruku-png' src='/images/latex/4d879bde964e549c6085ad630f56ad41.png' alt='$y$' style='vertical-align: -0.444444444444444ex;height: 1.44444444444444ex;' /></span> is that pixel&#8217;s color. This is fun for me because I don&#8217;t have any real experience working with image data &#8211; just getting the data into a form I could work with was new territory (I&#8217;m pretty sure I did it wrong; maybe a machine vision or image processing person will correct me someday). It&#8217;s also beneficial to the reader in that people are intuitively able to understand the impact of providing more or less data, and people can easily understand the importance of domain knowledge which is beyond the grasp of the algorithm.</p>
+
+<p>Before going any further, first let me give due credit to <a href='http://www.cs.wlu.edu/~levy/software/kd/' title='java KD-tree'>the java KD-tree</a> I used for this.</p>
+
+<p><img src='http://farm5.static.flickr.com/4015/4335461359_4390eec794_b.jpg' alt='Me at the Louvre, summer 2009' /></p>
+
+<p>In the above image, going left to right, you see the results of doing plain Nearest Neighbor, K Nearest Neighbor (with <span class='maruku-inline'><img class='maruku-png' src='/images/latex/f2b10a7aad70e5744be024fcd9c3ce64.png' alt='$k=3$' style='vertical-align: -0.0ex;height: 1.55555555555556ex;' /></span>) and K Nearest Neighbor with some smoothing (In a subsequent post, I want to do a Gaussian process/regression tack, and maybe some other mixture scheme). And of course, top to bottom represents more to less data. In particular, in each case I walked over the whole picture and included each pixel with some probability <span class='maruku-inline'><img class='maruku-png' src='/images/latex/1673ac8aa9b48203da9b40ba52ef26de.png' alt='$p$' style='vertical-align: -0.444444444444444ex;height: 1.44444444444444ex;' /></span>, where in the top row <span class='maruku-inline'><img class='maruku-png' src='/images/latex/85ce2b98d973b157ef1c99fecc2c28a8.png' alt='$p = 0.1 * 2^{-7}$' style='vertical-align: -0.444444444444444ex;height: 2.22222222222222ex;' /></span> and in the bottom row <span class='maruku-inline'><img class='maruku-png' src='/images/latex/f22a28fe879090098c905dc82da638c5.png' alt='$p = 0.1$' style='vertical-align: -0.444444444444444ex;height: 2.0ex;' /></span>, and each row in between differs from those above and below by a factor of two. Then for all non-sampled points, we try to guess the associated value given the sampled points, and those predictions, together with the sampled data are what you see displayed. To be fair, each image is actually treated basically as three functions, one each for red, green and blue channels, and I&#8217;ve just remixed them for ease of presentation.</p>
+
+<p>With the image above, I want to make a few points:</p>
+
+<h3 id='our_models_are_wrong'>Our models are wrong.</h3>
+
+<p>Ok, so not necessarily always. Sometimes our data actually works according to a clean model &#8211; maybe a robot is navigating with distance sensors that really do have normal noise, for instance. But for netflix and your credit card company and everyone trying to do inference using data that comes from people, our model is probably wrong.</p>
+
+<p>When a human looks at the pictures on the bottom row, they&#8217;re bringing a life&#8217;s worth of domain knowledge to the table to understand it. It&#8217;s not just a map of (x,y) pairs to (r, g, b) values; it&#8217;s a kid standing in front of a statue. But the simple nearest neighbor model, and the fancy dirichlet mixture model, or some modified Ising model that make a straight-forward effort to just learn this as a picture are poor in that they don&#8217;t have a concept of this function being a 2d image of a 3d world where solid objects are seen under light, let alone concepts of sphynxes or tourists or hair or eyes.</p>
+
+<p>A while ago I worked on what we called a &#8220;click model&#8221;. Of course, I can&#8217;t go into details, but at the high level, if a user searches for something, and gets back a list of results and clicks on only one of them, there&#8217;s a tricky inference process about how this observation informs our understanding of the relevance of each of the returned results to the given query. But really, you&#8217;re trying to write a model of user behavior, and inevitably there are a huge number of factors which affect that behavior which your system can&#8217;t consider.</p>
+
+<h3 id='machine_learning_cant_aspire_to_be_magic'>Machine learning can&#8217;t aspire to be magic.</h3>
+
+<p>It&#8217;s just common sense. A lot of people who have an idea of what machine learning is, but who haven&#8217;t actually worked on it much (and even some who have) tend to strongly over-estimate its powers. But the bottom line is sometimes there simply isn&#8217;t enough data to really learn the underlying material. No matter how smart your algorithms or your human visual system, given the very small amount of data in the top row of images, there&#8217;s no realistic way that you could really &#8216;learn&#8217; what&#8217;s going on in the rest of the picture.</p>
+
+<p>Of course, the opposite is also true. In the event that one can get measurements (or whatever) of a significant portion of the population as the observed data, it can be possible for even simple algorithms with no representation of the complex structure underlying the data (as in the bottom row of pictures above). Don&#8217;t get me wrong &#8211; different algorithms will fare better or worse, but they can all be in the same ballpark. Above, if we were to evaluate the error of predicted RGB values from the true values of the original picture, we would see that the smoothed KNN approach is consistently superior to the KNN approach which is consistently superior to the single nearest neighbor approach. But looking at the bottom row of pictures, does it really matter that much?</p>
+
+<p>From the above two points, it would be tempting to say that supervised machine learning, and tasks like function learning or classification only can make meaningful improvements in some Goldilocks space of problems where where have enough data, but not too much. But of course, what this misses is that how much data you have is relative to how big your space is, which is dependent on how you decide to represent your problem.</p>
+
+<p>For instance, a language model trained on a bunch of sentences can really think of itself as having data dimension is <span class='maruku-inline'><img class='maruku-png' src='/images/latex/f18e3960c9ff852b537a53c3004e9d0a.png' alt='$|V|^l$' style='vertical-align: -0.555555555555556ex;height: 2.33333333333333ex;' /></span> where <span class='maruku-inline'><img class='maruku-png' src='/images/latex/84c9b0274ccff3ed37416e1c8251c792.png' alt='$V$' style='vertical-align: -0.0ex;height: 1.55555555555556ex;' /></span> is the vocabulary size and <span class='maruku-inline'><img class='maruku-png' src='/images/latex/bf36060e03e5988e194ab69184da668d.png' alt='$l$' style='vertical-align: -0.0ex;height: 1.55555555555556ex;' /></span> is the longest sentence. However an <span class='maruku-inline'><img class='maruku-png' src='/images/latex/fba01e94f33c55af5e1ca9ef426e732b.png' alt='$n$' style='vertical-align: -0.0ex;height: 1.0ex;' /></span>-gram language model operates by picking some <span class='maruku-inline'><img class='maruku-png' src='/images/latex/47425459484e3e6c69aa2c9ad061d0aa.png' alt='$n &lt; l$' style='vertical-align: -0.0ex;height: 1.55555555555556ex;' /></span> and reconfiguring its data to be points of dimension <span class='maruku-inline'><img class='maruku-png' src='/images/latex/766e6b21d5791810e7e4c123b8e14485.png' alt='$|V|^n$' style='vertical-align: -0.555555555555556ex;height: 2.22222222222222ex;' /></span>, and instead of predicting the next word given the whole previous part of the sentence, it can just predict given the last <span class='maruku-inline'><img class='maruku-png' src='/images/latex/fba01e94f33c55af5e1ca9ef426e732b.png' alt='$n$' style='vertical-align: -0.0ex;height: 1.0ex;' /></span> words.</p>
+
+<p><em>This</em> is how machine learning really advances &#8211; by reconsidering ways that problems can be represented.</p>
+  <a id="more" href="/2010/02/06/machine-learning-is-not-magic.html#disqus">Comments &raquo;</a>
+</div>
+
+
+  
+</div>
+
+<script type="text/javascript">
+var disqus_developer = 1;
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/aaronssphericalcow/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+  </body>
+</html>
