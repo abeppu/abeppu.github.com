@@ -5,6 +5,6 @@ markdown:    maruku
 permalink:   date
 maruku:
   use_tex:    true
-  use_divs:   false
-  png_dir:    images/latex/
+  use_divs:   false	
+  png_dir:    ./_site/images/latex/
   png_url:    /images/latex/
