@@ -1,10 +1,11 @@
 destination: ./_site
-auto:        false
+auto:        true
 lsi:         false
+pygments:    true
 markdown:    maruku
 permalink:   date
 maruku:
   use_tex:    true
-  use_divs:   false	
+  use_divs:   false
   png_dir:    ./_site/images/latex/
   png_url:    /images/latex/
