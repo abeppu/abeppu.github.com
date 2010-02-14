@@ -1,27 +1,11 @@
 <!DOCTYPE html>
 <html>
 
-<link rel="stylesheet" type="text/css" href="/css/default.css" />
   <head>
-    <title>Aaron's spherical cow : explorations in modeling the world - {{page.title}}</title>
+    <title>{{ page.title }}</title>
   </head>
-
   <body>
-    {{ content }}
-<script type="text/javascript">
-var disqus_developer = 1;
-//<![CDATA[
-(function() {
-	var links = document.getElementsByTagName('a');
-	var query = '?';
-	for(var i = 0; i < links.length; i++) {
-	if(links[i].href.indexOf('#disqus_thread') >= 0) {
-		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-	}
-	}
-	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/aaronssphericalcow/get_num_replies.js' + query + '"></' + 'script>');
-})();
-//]]>
-</script>
+    <h2><{{ page.title }}</h2>
+	    {{ content }}
   </body>
 </html>
