@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/css/linotype.css" />
     <script type="text/javascript" src="/js/d3.js"></script>
     <script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
-    <title>{{page.title}} - Aaron's Digital Wastebook</title>
+    <title>Notes - Aaron's Digital Wastebook</title>
   </head>
 
   <body>
@@ -14,14 +14,10 @@
       <div id="hd"> 
 	<ul class="path"> 
 	  <li><a href="/index.html">Home</a></li> 
-	  {% if page.type == "blog" %}
-	    <li><a href="/index.html">Blog</a></li>
-	  {% endif %}
-	  {% if page.type == "notes" %}
-	    <li><a href="/notes/index.html">Notes</a></li>
-	  {% endif %}
-	  <!--     <li><a href="/{}">{{page.section}}</a></li>  -->
-	  <li class="current">{{page.title}}</li> 
+	  
+	  
+	  <!--     <li><a href="/{}"></a></li>  -->
+	  <li class="current">Notes</li> 
 	</ul> 	
 	<h1>Aaron's Digital <br> Wastebook</h1> 
 	<!--<h2>in Aaron's Digital Wastebook</h2> -->
@@ -29,7 +25,18 @@
       <div id="bd">
         <div id="yui-main"> 
           <div id="body" class="yui-b"> 	   
-	    {{ content }}
+	    <p>
+The following are written to aid my own learning and organization. While I hope that others might find them useful, I hold myself to no particular standards with respect to editing, originality, or correctness. </p>
+
+<p><a href="/notes/algebra.html">Algebra</a></p>
+
+<p><a href="/notes/minimize.html">move</a></p>
+
+<p><a href="/notes/questions.html">questions to answer</a></p>
+
+<p><a href="/notes/statymath.html">scribbles on math and statistics</a></p>
+
+
           </div>
 	</div>
 	<div id="sidebar" class="yui-b">

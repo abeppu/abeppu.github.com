@@ -1,5 +1,12 @@
+destination: ./_site
 auto:        true
 lsi:         false
 pygments:    true
-markdown:    maruku
-permalink:   date
+markdown:    kramdown
+textile:     maruku
+permalink: /blog/:year/:month/:day/:title.html
+kramdown:
+  use_tex:    true
+  use_divs:   false
+  png_dir:    ./_site/blog/images/latex/
+  png_url:    /blog/images/latex/

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/linotype.css" />
+    <script type="text/javascript" src="/js/d3.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
+    <title>Algebra - Aaron's Digital Wastebook</title>
+  </head>
+
+  <body>
+    <script type="text/javascript" src="http://mathjax.connectmv.com/MathJax.js"></script>
+    <link rel="shortcut icon" href="/images/4color.png" />
+    <div id="doc" class="yui-t6"> 
+      <div id="hd"> 
+	<ul class="path"> 
+	  <li><a href="/index.html">Home</a></li> 
+	  
+	  
+	    <li><a href="/notes/index.html">Notes</a></li>
+	  
+	  <!--     <li><a href="/{}"></a></li>  -->
+	  <li class="current">Algebra</li> 
+	</ul> 	
+	<h1>Aaron's Digital <br> Wastebook</h1> 
+	<!--<h2>in Aaron's Digital Wastebook</h2> -->
+      </div> 
+      <div id="bd">
+        <div id="yui-main"> 
+          <div id="body" class="yui-b"> 	   
+	    <p>Table of Contents:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#algebraic-basics">Algebraic Basics</a>    <ul>
+      <li><a href="#group-theory-basics">Group Theory Basics</a>        <ul>
+          <li><a href="#subgroups">Subgroups</a></li>
+          <li><a href="#cosets-and-quotient-groups">Cosets and quotient groups</a></li>
+        </ul>
+      </li>
+      <li><a href="#monoids">Monoids</a>        <ul>
+          <li><a href="#monoids-and-category-theory">Monoids and Category Theory</a></li>
+          <li><a href="#monoids-and-fp">Monoids and FP</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#category-theory">Category Theory</a>    <ul>
+      <li><a href="#categories-and-morphisms">Categories and Morphisms</a></li>
+      <li><a href="#subcategories">Subcategories</a></li>
+      <li><a href="#functors">Functors</a>        <ul>
+          <li><a href="#full-and-faithful">Full and Faithful</a></li>
+          <li><a href="#other-flavors-and-properties-of-functors">Other flavors and properties of functors</a></li>
+          <li><a href="#functors-in-fp">Functors in FP</a></li>
+          <li><a href="#named-categories">Named Categories</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="algebraic-basics">Algebraic Basics</h1>
+
+<h2 id="group-theory-basics">Group Theory Basics</h2>
+
+<p>A <em>group</em> is a set combined with a binary operation <script type="math/tex">G = (S, \star)</script> with the following properties:  </p>
+
+<ul>
+  <li>The set is <em>closed</em> under the operation, such that if <script type="math/tex">(a \star b) = c \in S</script> such that for all<script type="math/tex">a,b \in S</script></li>
+  <li>The operation is associative <script type="math/tex">(a \star b) \star c = a \star (b \star c) \; \forall a, b, c \in S</script></li>
+  <li>The set <script type="math/tex">S</script> contains a unique identity <script type="math/tex">e</script> such that <script type="math/tex">e \star a = a = a \star e</script></li>
+  <li>Inverses exist : for each <script type="math/tex">a \in S</script> there’s a unique <script type="math/tex">b \in S</script> such that <script type="math/tex">a \star b = e = b \star a</script>.  This inverse may be written <script type="math/tex">b = a^{-1}</script>.</li>
+</ul>
+
+<p>We may write a group as a <em>product group</em> where the operation is multiplication, or as as an <em>additive group</em>, in which case the identity may be written as <script type="math/tex">0</script>.</p>
+
+<p>A group is <em>abelian</em> if it additionally satisfies the property that <script type="math/tex">a \star b = b \star a</script> for all <script type="math/tex">a, b \in G</script>.</p>
+
+<p>A <em>group homomorphism</em> is a map between two groups which maintains group structure. Given two groups <script type="math/tex">(F, \star), (G, \bullet)</script> and a map <script type="math/tex">a : F \rightarrow G</script> is a homomorphism if <script type="math/tex">a(f \star g) = a(f) \bullet a(g)</script> for all <script type="math/tex">f, g \in G</script>.</p>
+
+<p>The <em>order</em> of a group, sometimes written <script type="math/tex">o(G)</script> is the number of elements in the underlying set, which may be infinite.</p>
+
+<h3 id="subgroups">Subgroups</h3>
+
+<p>Given a group <script type="math/tex">(G, \star)</script> if a set <script type="math/tex">F \subset G</script>, if <script type="math/tex">(F, \star)</script> still constitutes a group, then <script type="math/tex">F</script> is a <em>subgroup</em> of <script type="math/tex">G</script>.</p>
+
+<p>A subgroup <script type="math/tex">H</script> of <script type="math/tex">G</script> is <em>normal</em> if <script type="math/tex">gH = Hg</script> for all <script type="math/tex">g \in G</script>.</p>
+
+<p>The <em>center</em> of a group <script type="math/tex">G</script> is <script type="math/tex">H = \{h \in G : g \star h = h \star g \; \forall g \in G \}</script>. This is a subgroup of <script type="math/tex">G</script>.</p>
+
+<p>Given some group <script type="math/tex">G</script>, and some element <script type="math/tex">a \in G</script>, the subgroup <em>generated</em> by <script type="math/tex">a</script> is <script type="math/tex">H = \{a^i : i \in \mathbb{Z}\}</script>. The <em>order of <script type="math/tex">a</script></em> is the order of <script type="math/tex">H</script>.</p>
+
+<p>A group is <script type="math/tex">cyclic</script> if there’s an <script type="math/tex">a \in G</script> where <script type="math/tex">a</script> generates <script type="math/tex">G</script>.</p>
+
+<p>Properties :  </p>
+
+<ul>
+  <li>Every subgroup must contain the identity element <script type="math/tex">e</script></li>
+  <li>If <script type="math/tex">H_1, H_2</script> are subgroups of <script type="math/tex">G</script>, then <script type="math/tex">H_1 \cap H_2</script> is a subset of <script type="math/tex">G</script>.</li>
+  <li>If <script type="math/tex">H_1, H_2</script> are subgroups of <script type="math/tex">G</script>, and neither us a subset of the other, then <script type="math/tex">H_1 \cup H_2</script> is <em>not</em> a subgroup of <script type="math/tex">G</script></li>
+  <li>Given <script type="math/tex">H = \{a^i : i \in \mathbb{Z}\}</script>, and defining a function <script type="math/tex">f(m) = a^m</script>, the order of a <script type="math/tex">o(H)</script> is finite iff 
+    <ul>
+      <li><script type="math/tex">f</script> is not injective iff</li>
+      <li>there exists <script type="math/tex">i, j \in \mathbb{Z}</script> such that <script type="math/tex">a^i = a^j, i \neq j</script></li>
+    </ul>
+  </li>
+  <li>if <script type="math/tex">H = \{a^i : i \in \mathbb{Z}\}</script> has finite order, then
+    <ul>
+      <li><script type="math/tex">o(H) = n</script> where <script type="math/tex">n</script> is the smallest integer with <script type="math/tex">a^n = e</script> and </li>
+      <li><script type="math/tex">f^{-1}(e) = n\mathbb{Z}</script> (said another way, <script type="math/tex">a^{kn} = e</script> for all <script type="math/tex">k \in \mathbb{Z}</script>)</li>
+    </ul>
+  </li>
+  <li>if <script type="math/tex">H</script> is a subgroup of some cyclic <script type="math/tex">G</script>, then <script type="math/tex">H</script> is also a cyclic.</li>
+</ul>
+
+<h3 id="cosets-and-quotient-groups">Cosets and quotient groups</h3>
+
+<p>Given a group <script type="math/tex">G</script> and a subgroup <script type="math/tex">H</script>, the left and right <em>cosets</em> of <script type="math/tex">H</script> containing an element <script type="math/tex">g \in G</script> are <script type="math/tex">gH = \{g \star h, h \in H\}</script> and <script type="math/tex">Hg = \{h \star g, h \in H\}</script>.  The cosets of a subgroup form a partition; the union of all left cosets is <script type="math/tex">G</script>, and any two left cosets are either equal or disjoint, and the same is true of right cosets. In general, these are two <em>different</em> partitions, and left and right cosets are distinct.</p>
+
+<p>Cosets form equivalence classes:</p>
+
+<ul>
+  <li>The right cosets are equivalence classes for a relation defined as <script type="math/tex">a \sim b</script> iff <script type="math/tex">a \ast b^{-1} \in H</script></li>
+  <li>
+<script type="math/tex; mode=display">cl(a) = \{b \in G : a \sim b\} = \{h \ast a : h \in H\} = Ha</script>
+  </li>
+  <li>The left cosets are equivalence classes for a relation defined as <script type="math/tex">a \sim b</script> iff <script type="math/tex">b^{-1}\ast a \in H</script></li>
+  <li>
+<script type="math/tex; mode=display">cl(a) = \{a \ast h : h \in H\} = aH</script>
+  </li>
+  <li>Defining an equivalence relation by <script type="math/tex">a \sim b</script> iff <script type="math/tex">a \ast b^{-1} \in H</script>, we can see <script type="math/tex">cl(a) = \{b \in G : a \sim b\} = \{h \ast b : h \in H \} = Ha</script>.   In English, each coset is an equivalence class of elements which are off from <script type="math/tex">a</script> by an element of <script type="math/tex">H</script>.</li>
+</ul>
+
+<p>Some properties</p>
+
+<ul>
+  <li>All left cosets and all right cosets have the same order, namely <script type="math/tex">o(H)</script> (since <script type="math/tex">H</script> is itself a coset).</li>
+  <li>The <em>index</em> of <script type="math/tex">H</script> is the number of left cosets of <script type="math/tex">H</script>, writen as <script type="math/tex">[G : H]</script>.
+    <ul>
+      <li><em>Lagrange’s Theorem</em> states that <script type="math/tex">[ G : H ] = \frac{\vert G\vert}{\vert H\vert}</script> where <script type="math/tex">\vert G\vert</script> and  <script type="math/tex">\vert H\vert</script> are the orders of <script type="math/tex">G</script> and <script type="math/tex">H</script> respectively. Note that the number of left cosets is always equal to the number of right cosets. For example, <script type="math/tex">[\mathbb{Z} : n\mathbb{Z}]</script> for any <script type="math/tex">n</script>.  If <script type="math/tex">H</script> is a normal subgroup, then <script type="math/tex">[ G : H ] = \vert G / H\vert</script>.</li>
+      <li>The index of a group may be infinite, or uncountable. Any finite subgroup <script type="math/tex">H</script> of an infinite <script type="math/tex">G</script> contains a normal subgroup <script type="math/tex">N</script>. If <script type="math/tex">H</script> has index <script type="math/tex">n</script>, then the index of <script type="math/tex">N</script> is a factor of <script type="math/tex">n!</script>. As a consequence, if a subgroup <script type="math/tex">H</script> of <script type="math/tex">G</script> has index <script type="math/tex">p</script> where <script type="math/tex">p</script> is the smallest prime factor of <script type="math/tex">o(G)</script>, then <script type="math/tex">H</script> must be normal, as the index of the subgroup <script type="math/tex">N</script> of <script type="math/tex">H</script> must also be <script type="math/tex">p</script> (because there are no smaller factors). </li>
+    </ul>
+  </li>
+</ul>
+
+<p>For a given normal subgroup <script type="math/tex">N</script> of <script type="math/tex">G</script>, the quotient group <script type="math/tex">G / N = \{gN, g \in G\}</script>, where the group operation over cosets is <script type="math/tex">gN \cdot hN = (g \star h)N = \{s \star t :  s \in gN,\,t \in hN \}</script> (the product of two cosets is the coset of products of elements in those cosets).</p>
+
+<p>Example : given the group <script type="math/tex">(\mathbb{Z}, +)</script>, and subgroup <script type="math/tex">(2\mathbb{Z}, +)</script> :  </p>
+
+<ul>
+  <li>The cosets are just the odd integers, and the even integers</li>
+  <li>Any two odd numbers differ by some even number, and any two even numbers differ by some even number</li>
+  <li>The quotient group <script type="math/tex">\mathbb{Z}/2\mathbb{Z}</script> is a cyclic group of these two cosets.</li>
+</ul>
+
+<h2 id="monoids">Monoids</h2>
+
+<p>The purely algebraic view of a monoid is that it’s like a set without inverses.  That is, it’s a set, closed under some associative binary operation, where there exists an unique identity. </p>
+
+<h3 id="monoids-and-category-theory">Monoids and Category Theory</h3>
+
+<blockquote><p>A monoid is, essentially, the same thing as a category with a single object.</p></blockquote>
+
+<p>From a category theory perspective, because the restrictions on a monoid operation (associativity, identity and closure) are the same as the restrictions on morphism composition within a category, we can construct categories from monoids and monoids from categories:</p>
+
+<p>Given a category <script type="math/tex">C</script> containing object <script type="math/tex">X</script>, the set of all endomorphism on <script type="math/tex">X</script> given as <script type="math/tex">End(X)</script> forms a monoid under morphism composition, with the identity element of the monoid just being the identity function.</p>
+
+<p>Given a monoid <script type="math/tex">(M,\star)</script> we can construct a category which contains only one object whose morphisms are the elements of <script type="math/tex">M</script>. </p>
+
+<h3 id="monoids-and-fp">Monoids and FP</h3>
+
+<p>In languages like Haskell, a monoid is a pattern where elements of a type can be aggregated or folded together. As an example, lists form a monoid with list concatenation:  </p>
+
+<ul>
+  <li>closure : concatenating lists always produces a list</li>
+  <li>associativity : parenthesizing list concatenation doesn’t matter</li>
+  <li>identity : any list concatenated with the empty list (from the left or the right) gives back the original list.</li>
+</ul>
+
+<h1 id="category-theory">Category Theory</h1>
+
+<h2 id="categories-and-morphisms">Categories and Morphisms</h2>
+
+<p>A <em>category</em> <script type="math/tex">C</script> has:  </p>
+
+<ul>
+  <li>a class <script type="math/tex">\text{obj}(C)</script> whose elements are <em>objects</em>,  </li>
+  <li>a class <script type="math/tex">\text{hom}(C)</script> whose elements are <em>morphisms</em>,</li>
+  <li>Morphisms are mappings from one object to another.
+    <ul>
+      <li>Each morphism <script type="math/tex">f</script> has a <em>source</em> and a <em>target</em> object <script type="math/tex">a, b</script> where we write <script type="math/tex">f : a \rightarrow b</script>.</li>
+      <li>We might read “in C, <script type="math/tex">f</script> is a morphism from <script type="math/tex">a</script> to <script type="math/tex">b</script>”</li>
+      <li>We may write <script type="math/tex">\text{hom}(a, b)</script>.</li>
+    </ul>
+  </li>
+  <li>A binary operation <script type="math/tex">\circ</script> called <em>composition of morphisms</em> satisfying the following properties:
+    <ul>
+      <li>Associativity :  if <script type="math/tex">f : a \rightarrow b</script>, <script type="math/tex">g : b \rightarrow c</script> and <script type="math/tex">h : c \rightarrow d</script> then <script type="math/tex">(h \circ g) \circ f = h \circ g \circ f = h \circ (g \circ f)</script></li>
+      <li>Identity :  for any object <script type="math/tex">x</script>, there exists an identity morphism <script type="math/tex">1_x</script> such that for any <script type="math/tex">f : a \rightarrow b</script> we have <script type="math/tex">1_b \circ f = f = f \circ 1_a</script></li>
+    </ul>
+  </li>
+</ul>
+
+<p>A category <script type="math/tex">C</script> is <em>small</em> if <script type="math/tex">\text{obj}(C)</script> and <script type="math/tex">\text{hom}(C)</script> both form sets rather than proper classes; otherwise they are <em>large</em>.</p>
+
+<p>Morphisms come in various flavors. Given <script type="math/tex">f : a \rightarrow b</script>  :</p>
+
+<ul>
+  <li>
+    <p><script type="math/tex">f</script> is a <em>monomorphism</em> iff it is <em>left cancellative</em>, that is<script type="math/tex">f \circ g_1 = f \circ g_2 \Longrightarrow g_1 = g_2</script> for all <script type="math/tex">g_1, g_2 : z \rightarrow a</script>.</p>
+
+    <ul>
+      <li>Monomorphisms are analogues of injective functions; if <script type="math/tex">f</script> assigns each input to a distinct output then <script type="math/tex">f \circ g_1  = f \circ g_2</script> means that all of the outputs of <script type="math/tex">g_1</script> and <script type="math/tex">g_2</script> are equal.  </li>
+      <li>On the other hand if <script type="math/tex">f</script> is <em>not</em> injective, then there may be some <script type="math/tex">z \in Z</script> such that <script type="math/tex">g_1(z)</script> and <script type="math/tex">g_2(z)</script> are both in the inverse image of some <script type="math/tex">y \in Y</script> (through <script type="math/tex">f</script>).</li>
+    </ul>
+  </li>
+  <li>
+    <p>We call <script type="math/tex">f</script> an <em>epimorphism</em> iff it is <em>right cancellative</em>, that is<script type="math/tex">g_1 \circ f = g_2 \circ f \Longrightarrow g_1 = g_2</script> for all <script type="math/tex">g_1, g_2 : b \rightarrow z</script></p>
+
+    <ul>
+      <li>Epimorphisms are analogues to surjective functions; if <script type="math/tex">f</script> is surjective, then its image covers all of <script type="math/tex">Y</script>, so saying <script type="math/tex">g_1 \circ f = g_2 \circ f</script> is the same as saying that <script type="math/tex">g_1</script> and <script type="math/tex">g_2</script> are equal for every value in their domain.</li>
+      <li>On the other hand, if <script type="math/tex">f</script> is <em>not</em> surjective, then it could be true that <script type="math/tex">g_1 \circ f = g_2 \circ f</script> but that <script type="math/tex">g_1</script> and <script type="math/tex">g_2</script> differ for arguments in <script type="math/tex">Y</script> which are <em>not</em> in the image of <script type="math/tex">f</script>.</li>
+    </ul>
+  </li>
+  <li><script type="math/tex">f</script> is a <em>bimorphism</em> if it’s both a monomorphism and an epimorphism</li>
+  <li>
+    <p><script type="math/tex">f</script> is a <em>retraction</em> iff it has a right inverse <script type="math/tex">g : b \rightarrow a</script> such that <script type="math/tex">f \circ g = I_b</script>. </p>
+
+    <ul>
+      <li>Every retraction is an epimorphism; if <script type="math/tex">f \circ f^{-1}</script> then<br />
+<script type="math/tex">g_1 \circ f = g_2 \circ f</script><br />
+<script type="math/tex">g_2 \circ f \circ f^{-1} = g_2 \circ f \circ f^{-1}</script><br />
+<script type="math/tex">g_1 = g_2</script></li>
+    </ul>
+  </li>
+  <li>
+    <p><script type="math/tex">f</script> is a <em>section</em> iff it has a left inverse <script type="math/tex">g : b \rightarrow a </script> such that <script type="math/tex">g \circ f = I_a</script>.</p>
+
+    <ul>
+      <li>Every section is a monomorphism; if <script type="math/tex">f^{-1} \circ f = I_a</script> then<br />
+<script type="math/tex">f \circ g_1 = f \circ g_2 </script><br />
+<script type="math/tex">f^{-1} \circ f \circ g_1 = f^{-1} \circ f \circ g_2</script><br />
+<script type="math/tex">g_1 = g_2</script></li>
+    </ul>
+  </li>
+  <li>we call <script type="math/tex">f</script> an <em>isomorphism</em> if(f) it has an inverse (both right and left) <script type="math/tex">g : b \rightarrow a</script> such that <script type="math/tex">f \circ g = I_b</script> and <script type="math/tex">g \circ f = I_a</script>
+    <ul>
+      <li>When inverses exist, they are unique, and the relation is reciprocal; <script type="math/tex">g</script> is also an isomorphism with inverse <script type="math/tex">f</script></li>
+      <li>As with sections and retractions above, every isomorphism is a bimorphism, but not all bimorphisms are isomorphisms</li>
+      <li>Categories in which every bimorphism is also an isomorphism are called <em>balanced categories</em>.</li>
+    </ul>
+  </li>
+  <li>We call <script type="math/tex">f</script> an <em>endomorphism</em> iff <script type="math/tex">a = b</script></li>
+  <li>We call <script type="math/tex">f</script> an <em>automorphism</em> iff it’s both an endomorphism and an isomorphism</li>
+</ul>
+
+<h2 id="subcategories">Subcategories</h2>
+
+<p>A <em>subcategory</em> <script type="math/tex">S</script> of a category <script type="math/tex">C</script> has a subcollection of the objects and morphisms in <script type="math/tex">C</script> such that  </p>
+
+<ul>
+  <li>for every <script type="math/tex">X</script> in <script type="math/tex">\text{obj}(S)</script> <script type="math/tex">I_X</script> is in <script type="math/tex">\text{hom}(S)</script></li>
+  <li>for every morphism <script type="math/tex">f : X \rightarrow Y</script> in <script type="math/tex">\text{hom}(S)</script>, both the source and target <script type="math/tex">X</script> and <script type="math/tex">Y</script> are in <script type="math/tex">\text{obj}(S)</script></li>
+  <li>for any two morphisms <script type="math/tex">f, g</script> in <script type="math/tex">\text{hom}(S)</script>, <script type="math/tex">f \circ g</script> is also in <script type="math/tex">\text{hom}(S)</script>.</li>
+</ul>
+
+<p>A <em>full subcategory</em> is one in which, for any <script type="math/tex">X</script> and <script type="math/tex">Y</script> in <script type="math/tex">\text{obj}(S)</script> <em>all</em> morphisms between <script type="math/tex">X</script> and <script type="math/tex">Y</script> in <script type="math/tex">C</script> are also in <script type="math/tex">S</script>. For any collection of objects <script type="math/tex">A</script> in <script type="math/tex">C</script>, there’s a unique full subcategory of those objects and all morphism between them.</p>
+
+<p>A subcategory <script type="math/tex">S</script> of <script type="math/tex">C</script> is <em>ismomorphism-closed</em> or <em>strictly closed</em> if for every <script type="math/tex">Y \in S</script> every isomorphism <script type="math/tex">k : X \rightarrow C \in \text{hom}(C)</script> is also in <script type="math/tex">S</script>.</p>
+
+<p>A subcategory <script type="math/tex">S</script> of <script type="math/tex">C</script> is <em>wide</em> or <em>luff</em> if <script type="math/tex">\text{hom}(S) = \text{hom}(C)</script>. <script type="math/tex">S</script> may only be both wide and full if <script type="math/tex">S = C</script></p>
+
+<h2 id="functors">Functors</h2>
+
+<p>A <em>functor</em> is a mapping between categories. A functor can also be seen as a morphism in the category of categories. More concretely <script type="math/tex">F: C \rightarrow D</script> : </p>
+
+<ul>
+  <li>maps every <script type="math/tex">X \in C</script> to some <script type="math/tex">F(X) \in D</script></li>
+  <li>maps every morphism <script type="math/tex">f : X \rightarrow Y \in C</script> to a morphism <script type="math/tex">F(f) : F(X) \rightarrow F(Y) \in D</script> such that 
+    <ul>
+      <li>for all <script type="math/tex">X \in C ,\;F(1_X) = 1_{F(X)} </script></li>
+      <li>for all <script type="math/tex">f : X \rightarrow Y</script> and <script type="math/tex">g : Y \rightarrow Z, \; F(g \circ f) = F(g) \circ F(f)</script> </li>
+    </ul>
+  </li>
+</ul>
+
+<p>The crucial properties of a functor are that :</p>
+
+<ul>
+  <li>A functor <script type="math/tex">F : C \rightarrow D</script> transforms a commutative diagram on <script type="math/tex">C</script> to a commutative diagram on <script type="math/tex">D</script></li>
+  <li>If <script type="math/tex">f</script> is an isomorphism in <script type="math/tex">C</script>, then <script type="math/tex">F(f)</script> is an isomorphism of <script type="math/tex">D</script></li>
+  <li>Functors themselves can be composed. Given <script type="math/tex">F : A \rightarrow B</script> and <script type="math/tex">G : B \rightarrow C</script> we can compose them to make <script type="math/tex">G \circ F = H : A \rightarrow C</script>.</li>
+  <li>Functions between categories of a single object are monoid homomorphisms.</li>
+</ul>
+
+<p>Ordinary functors may be called <em>covariant</em>. A <em>contravariant</em> functor reverses the direction of morphisms and composition.  The mapping of objects meets the same requirements, by the mapping of morphism is now constructed such that:</p>
+
+<ul>
+  <li>Every morphism <script type="math/tex">f : X \rightarrow Y</script> gets mapped to a morphism <script type="math/tex">F(f) : F(Y) \rightarrow F(X)</script></li>
+  <li><strong>unchanged</strong> <script type="math/tex">F(1_X) = 1_{F(X)}</script> for all <script type="math/tex">X \in C</script> </li>
+  <li>for all <script type="math/tex">f : X \rightarrow Y</script> and <script type="math/tex">g : Y \rightarrow Z, \; F(g \circ f) = F(f) \circ) F(g)</script> </li>
+</ul>
+
+<h3 id="full-and-faithful">Full and Faithful</h3>
+
+<p>Considering only the mapping on morphisms of a functor <script type="math/tex">F: C \rightarrow D</script> :   </p>
+
+<ul>
+  <li><script type="math/tex">F</script> induces a function <script type="math/tex">F_{X,Y} : \text{hom}_C (X, Y) \rightarrow \text{hom}_D(F(X), F(Y))</script> for every pair of objects <script type="math/tex">X</script> and <script type="math/tex">Y</script> in <script type="math/tex">C</script>.</li>
+  <li><script type="math/tex">F</script> is <em>faithful</em> iff <script type="math/tex">F_{X,Y}</script> is injective.</li>
+  <li><script type="math/tex">F</script> is <em>full</em> iff <script type="math/tex">F_{X,Y}</script> is surjective.</li>
+  <li><script type="math/tex">F</script> is <em>fully faithful</em> iff <script type="math/tex">F_{X,Y}</script> is bijective.</li>
+</ul>
+
+<p>A category is <em>concrete</em> when it is equiped with a faithful functor to <strong>Set</strong> (the category of sets). Concreteness is not a property of categories but rather a construction that can be added to a category. A given category might be concretized by more than one faithful functor. A concrete category is <script type="math/tex">(C, U)</script> where <script type="math/tex">U</script> is a category and <script type="math/tex">U</script> is the faithful functor. This is often a forgetful functor which allows us to think of objects of the source category as being sets with some additional structure.  As an example, it’s trivial to construct a faithful functor from <strong>Grp</strong> (the category of groups) to <strong>Set</strong>.  In some contexts, we can select a <em>base category</em> <script type="math/tex">X</script> other than <strong>Set</strong></p>
+
+<h3 id="other-flavors-and-properties-of-functors">Other flavors and properties of functors</h3>
+
+<ul>
+  <li>
+    <p>An <em>endofunctor</em> maps from a category to itself.</p>
+  </li>
+  <li>
+    <p>An <em>identify functor</em> <script type="math/tex">1_C</script> is the endofunctor which maps every object to itself and every morphism to itself.</p>
+  </li>
+  <li>
+    <p>A <em>constant</em> or <em>selector</em> functor <script type="math/tex">f: C \rightarrow D</script> maps every object in C to some fixed <script type="math/tex">X</script> in <script type="math/tex">D</script>, and every morphism in C to a fixed morphism in D.</p>
+  </li>
+  <li>A <em>forgetful functor</em> is one that ‘forgets’ some algebraic property of its source, for example : 
+    <ul>
+      <li>a functor from a category of gadgets (e.g. groups, rings, etc) to a category of sets</li>
+      <li>a functor from abelian groups to groups which forgets commutativity</li>
+      <li>a functor from rings to groups which forgets multiplication</li>
+    </ul>
+  </li>
+  <li>A <em>bifunctor</em> is a functor of two arguments; it maps from some product category onto some other category.</li>
+  <li>A <em>multifunctor</em> generalizes the concept of a bifunctor to be a functor of some arbitrary <script type="math/tex">n</script> arguments.</li>
+</ul>
+
+<h3 id="functors-in-fp">Functors in FP</h3>
+
+<p>In Haskell <code>Functor</code> is a typeclass defining <code>fmap</code>. It is in a sense used to map from one category of things to another, where those categories are types distinguished only by a type parameter.  As an example, given a list of Strings, I may use <code>fmap</code> to produce a list of integers which represents the lengths of the strings.</p>
+
+<h3 id="named-categories">Named Categories</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="lead">Name</th><th scope="col"> Objects</th><th scope="col">Morphisms</th><th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" class="lead"><b>Set</b></th><td>sets</td><td>functions</td><td>the most commonly used category</td>
+    </tr>
+    <tr>
+      <th scope="row" class="lead"><b>Mon</b></th><td>monoids</td><td>monoid homomorphisms</td><td>every monoid is like a category</td>
+    </tr>
+    <tr>
+      <th scope="row" class="lead"><b>Grp</b></th><td>groups</td><td>group homomorphisms</td><td>complete and co-complete</td>
+    </tr>
+  </tbody>
+</table>
+
+
+          </div>
+	</div>
+	<div id="sidebar" class="yui-b">
+	  <table><tr><td> 
+		<ul> 
+		  <li><a href="/index.html">Home</a></li> 
+		  <li><a href="/blog/about.html">About</a></li> 
+		  <li><a href="/blog/resume.html">Resume</a></li> 
+		</ul> 
+	  </td></tr></table> 
+	</div>
+      </div>      
+
+    </div>
+    <dstatic.flickr.com/5050/535iv>
+      <!--  give credit where credit is due for fonts  -->
+      <br><br>
+      Font Credits:
+      <font face="Linux Libertine Regular"><a href="http://www.linuxlibertine.org/index.php?id=2&L=1">linux libertine</a></font>&nbsp&nbsp
+      <font face="Biolinum Regular"><a href="http://www.linuxlibertine.org/index.php?id=2&L=1">linux biolinum</a></font>&nbsp&nbsp
+      <font face="skyhook"><a href="http://www.fontomtype.de/pages/2010/10/23/skyhookmono/">skyhook mono</a></font>
+    </div>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: hello world
+title: Hello World!
 ---
 
 
@@ -23,6 +23,3 @@ I'm starting the blog because I can't stand to have all my coding be at work.  T
 * I don't require all of my contributions to be original.  In fact, I think there's a lot I could learn from implementing classic stuff that other people have pioneered; other people could also benefit from seeing a slowed-down tutorial on how some of the fancy things I want to learn about work.
 * I'd like to have at least some of my posts be teaching/tutorial posts.  This may be a presumptuous goal; I'm a newcomer to a lot of the things I'm interested in, but I've been told alternatively that the best way to learn something is to a) implement it from scratch or b) teach it.  For somethings, I hope to do both
 
-##What's with the name?
-
-For people who aren't familiar with the joke, see [here](http://en.wikipedia.org/wiki/Spherical_cow).

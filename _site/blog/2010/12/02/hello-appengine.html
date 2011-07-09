@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/css/linotype.css" />
     <script type="text/javascript" src="/js/d3.js"></script>
     <script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
-    <title>{{page.title}} - Aaron's Digital Wastebook</title>
+    <title>Hello appengine - Aaron's Digital Wastebook</title>
   </head>
 
   <body>
@@ -14,14 +14,10 @@
       <div id="hd"> 
 	<ul class="path"> 
 	  <li><a href="/index.html">Home</a></li> 
-	  {% if page.type == "blog" %}
-	    <li><a href="/index.html">Blog</a></li>
-	  {% endif %}
-	  {% if page.type == "notes" %}
-	    <li><a href="/notes/index.html">Notes</a></li>
-	  {% endif %}
-	  <!--     <li><a href="/{}">{{page.section}}</a></li>  -->
-	  <li class="current">{{page.title}}</li> 
+	  
+	  
+	  <!--     <li><a href="/{}"></a></li>  -->
+	  <li class="current">Hello appengine</li> 
 	</ul> 	
 	<h1>Aaron's Digital <br> Wastebook</h1> 
 	<!--<h2>in Aaron's Digital Wastebook</h2> -->
@@ -29,7 +25,16 @@
       <div id="bd">
         <div id="yui-main"> 
           <div id="body" class="yui-b"> 	   
-	    {{ content }}
+	    <div id="post">
+  <h1 class="title"><a href="/blog/2010/12/02/hello-appengine.html">
+    Hello appengine
+  </a></h2>
+  <div id="date">published 02 Dec 2010</div>
+  <p>Just a quick note : I had initially started this blog on github pages, and written a single substantive post before forgetting about it for an extended period. I’m attempting to restart my efforts, this time deciding to move to google appengine. The static content makes it a good fit for appengine, which offers more freedom and flexibility than github pages, where I could never get latex images to work. Also, with the new home I’m also dropping the old name (now expunged).</p>
+
+</div>
+ 
+
           </div>
 	</div>
 	<div id="sidebar" class="yui-b">

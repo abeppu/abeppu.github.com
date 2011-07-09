@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/css/linotype.css" />
     <script type="text/javascript" src="/js/d3.js"></script>
     <script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
-    <title>{{page.title}} - Aaron's Digital Wastebook</title>
+    <title>About - Aaron's Digital Wastebook</title>
   </head>
 
   <body>
@@ -14,14 +14,10 @@
       <div id="hd"> 
 	<ul class="path"> 
 	  <li><a href="/index.html">Home</a></li> 
-	  {% if page.type == "blog" %}
-	    <li><a href="/index.html">Blog</a></li>
-	  {% endif %}
-	  {% if page.type == "notes" %}
-	    <li><a href="/notes/index.html">Notes</a></li>
-	  {% endif %}
-	  <!--     <li><a href="/{}">{{page.section}}</a></li>  -->
-	  <li class="current">{{page.title}}</li> 
+	  
+	  
+	  <!--     <li><a href="/{}"></a></li>  -->
+	  <li class="current">About</li> 
 	</ul> 	
 	<h1>Aaron's Digital <br> Wastebook</h1> 
 	<!--<h2>in Aaron's Digital Wastebook</h2> -->
@@ -29,7 +25,21 @@
       <div id="bd">
         <div id="yui-main"> 
           <div id="body" class="yui-b"> 	   
-	    {{ content }}
+	    <h2 id="about-me">About Me</h2>
+
+<p>I’m a software engineer.  After graduating from Berkeley in 2008, I went to work for a couple of years with the Search Analytics team at <a href="http://a9.com/">A9.com</a> in Palo Alto. Recently (the start of 2011) I began working on the search team at <a href="http://etsy.com">Etsy.com</a>.</p>
+
+<p>Online, I can be found at the following :  </p>
+
+<ul>
+  <li><a href="http://twitter.com/#!/abeppu">twitter</a> </li>
+  <li><a href="http://www.linkedin.com/pub/aaron-beppu/13/778/a74">linkedIn</a></li>
+</ul>
+
+<h2 id="about-the-site">About the site</h2>
+
+<p>This site (all static content) is assembled with <a href="jekyllrb.com">jekyll</a> using <a href="http://kramdown.rubyforge.org/">kramdown</a> and deployed on <a href="http://code.google.com/appengine/">appengine</a>.  Math is rendered with <a href="http://www.mathjax.org/">MathJax</a>.</p>
+
           </div>
 	</div>
 	<div id="sidebar" class="yui-b">

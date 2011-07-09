@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/css/linotype.css" />
     <script type="text/javascript" src="/js/d3.js"></script>
     <script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
-    <title>{{page.title}} - Aaron's Digital Wastebook</title>
+    <title>other uses of solr faceting - Aaron's Digital Wastebook</title>
   </head>
 
   <body>
@@ -14,14 +14,10 @@
       <div id="hd"> 
 	<ul class="path"> 
 	  <li><a href="/index.html">Home</a></li> 
-	  {% if page.type == "blog" %}
-	    <li><a href="/index.html">Blog</a></li>
-	  {% endif %}
-	  {% if page.type == "notes" %}
-	    <li><a href="/notes/index.html">Notes</a></li>
-	  {% endif %}
-	  <!--     <li><a href="/{}">{{page.section}}</a></li>  -->
-	  <li class="current">{{page.title}}</li> 
+	  
+	  
+	  <!--     <li><a href="/{}"></a></li>  -->
+	  <li class="current">other uses of solr faceting</li> 
 	</ul> 	
 	<h1>Aaron's Digital <br> Wastebook</h1> 
 	<!--<h2>in Aaron's Digital Wastebook</h2> -->
@@ -29,7 +25,25 @@
       <div id="bd">
         <div id="yui-main"> 
           <div id="body" class="yui-b"> 	   
-	    {{ content }}
+	    <div id="post">
+  <h1 class="title"><a href="/blog/drafts/2011-01-30-solr-faceting-for-analyics.html">
+    other uses of solr faceting
+  </a></h2>
+  <div id="date">published Liquid error: undefined method `strftime' for nil:NilClass</div>
+  <p>When I was in college, I briefly experimented with solr. As an intern, I hacked together the initial round of search features for <a href="http://twistage.com">twistage</a>, which meant setting up a solr instance, feeding it data, and constructing queries from the frontend.  Now, at <a href="http://www.etsy.com">Etsy</a> I get to work with solr again, and hopefully this time I’ll learn more about its internals.  For the moment, however, I want to explore a couple tricks about how solr can be <em>used</em>.</p>
+
+<ul>
+  <li>Using timestamped queries and facet ranges, you can use your solr instance to construct time series data</li>
+  <li></li>
+</ul>
+
+<p>TODO : assemble an example dataset.  Want timestamps so I can do time series graphs, want some other real bin (like price?) so I can do a not time related bucketing, ideally would like to do geohash range bucketing – and map onto google maps.</p>
+
+<p>For instance, use the EPA dataset.  </p>
+
+</div>
+ 
+
           </div>
 	</div>
 	<div id="sidebar" class="yui-b">
