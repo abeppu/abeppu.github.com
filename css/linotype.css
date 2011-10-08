@@ -10,7 +10,7 @@
 /* ======================== Block elements ====================== */
 
 html {
-    font-size: 62.5%;
+    font-size: 75%;/*62.5%;*/
 }
 
 @font-face {
@@ -72,11 +72,6 @@ body {
 h4,h5,h6 {
     font-family: "Linux Libertine Regular", "Book Antiqua", "Palatino Linotype", "Palatino", "Georgia", "Times", "Times New Roman", serif;
 }
-
-
-
-
-
     
 h1 { 
     font-family: "Biolinum Bold", "Book Antiqua", "Palatino Linotype", "Palatino", "Georgia", "Times", "Times New Roman", serif;

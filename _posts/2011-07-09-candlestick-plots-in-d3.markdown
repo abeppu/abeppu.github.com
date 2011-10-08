@@ -7,7 +7,7 @@ So, for a while now I've been using [protovis](http://mbostock.github.com/protov
 
 <div id="chart"></div>
 
-Also, [here's](/blog/candlestick.html#GOOG) a larger form of it (but for Google data).
+Also, [here's](/blog/candlestick.html#GOOG) a larger form of it (but for Google data). Note : That page just pulls the stock ticker symbol from the hash in the url (the data coming from yaoo finance via YQL), so try plugging in a few values.
 
 <script type="text/javascript" src="/js/candlestick.js"></script>
 <script type="text/javascript" src="/js/fetchstockdata.js"></script>
