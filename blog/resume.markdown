@@ -5,35 +5,87 @@ title: Resume
 
 # Aaron Beppu
 
-## Education
-* **2005-2008** University of California Berkeley  
-BA in Cognitive Science, concentration in computational modeling  
-  (Highest Honors, Departmental Citation, 3.8 GPA)
+I'm a veteran software engineer with experience with large-scale data analysis, machine learning, data engineering, supporting infrastructure, and related product work.
+I'm seeking to bring these skills to applications which can benefit society.
 
 ## Experience
-* **January 2011 - Present** Etsy.com  
-*Software Engineer in Search*
-	* Designed and implemented system to improve search ranking by "learning" from repeated successes and failures. Offline clickstream analysis (Cascading+Hadoop) to discover the product features most important for a given query, coupled with online construction of augmented Solr queries favoring those features. Showed 20% improvement in conversion rate in A/B tests.
-    * Analytics and dashboarding to compare search metrics (e.g. GMS per search, click rate, etc) between A/B test conditions. Rendered graphs in-browser using protovis/js. Metrics computed offline using Cascading/Hadoop.
-    * Data-driven stemming. Hadoop analysis of clickstream data to discover words which our previous stemmer inappropriately reduced to the same form (as in "steel" and "Steelers"). Implemented new stemmer which keeps these words distinct, and integrated it into our analysis chain.
-    * Autosuggestion of place names in a manner sensitive to population and distance from user's location.
-* **July 2008 - December 2010** A9.com (a wholly-owned subsidiary of Amazon)  
-*Software Development Engineer in Search Analytics*  
-  * Agglomerative clustering to find sets of similar queries and products based on user behavior data  
-  * Generative models of user click behavior (and approximate Bayesian inference) to compensate for "position-bias" in ordered search results 
-  * Distributed system for orchestrating complex analytics work-flows  
-  * Large scale ongoing analytics of search related user behavior using Hadoop  
-  * Methods and tools to evaluate quality of spelling suggestions via Mechanical Turk  
-  * Metrics to gauge proportion of Amazon's traffic, clicks, product views, purchases, and purchase dollar attributable to search  
-  * Finding, summarizing and reporting sequences of user actions which strongly suggest that the user is having a poor search experience
 
-* **Summer 2007** Twistage  
-*Intern*  
-  * Framework for browser-based testingof web-apps (based on Selenium), which was subsequently adopted for use before all deploys  
-  * Search features (indexing, querying, snippets and highlighting) for a large repository of video content, based on Solr/Lucene
 
-## Talks and Publications
-* Presented "Data Mining for Product Search Ranking" at Hadoop World 2011.
-* Beppu, A., Griffiths, T. L. (2009). Iterated learning and the cultural ratchet. _Proceedings of the 31st Annual Conference of the Cognitive Science Society_.
-* The above paper describes cases when a sequence of communicating Bayesian agents will have the same asymptotic consistency as a single learner, and when they will not. The predictions of our model are validated using a lab-based learning experiment with human participants.
+### 2013 - Now, Sr to Principal Engineer, Sift (San Francisco, CA)
 
+I have been a key contributor within engineering during a period of continued and transformative growth. During that period I have driven many of the projects underpinning that transformation. Here's a sample:
+
+
+#### Product:
+
+- A flexible workflow automation product. Customers can describe "if X then Y else Z" conditions and automations which have access to our ML features and predictions.
+- A real-time reporting product. Customers can see up-to-the-moment reports and aggregates describing their use of our product.
+
+
+#### Data hacking:
+
+- A model calibration system which supports migrating between models while preserving marginal score distributions. This lets us change/improve models without disrupting downstream automations.
+- Designed and built jobs to track prediction accuracy over time. Designed to consider widely differing customers, and labels which may arrive months after predictions.
+
+#### Platform/Infra:
+
+- Migrated between incompatible versions of HBase, with no downtime. Involved dual-writing through all tables, backfill jobs to transform between HFile versions, and tooling to check values at a byte-level.
+- Encrypted all data at rest. Involved replacing every instance in our fleet, with new images with different FS initialization.
+- Migrated from SQS to Kafka as our primary queue. Included developing a suite of libraries to handle multi-threaded consumption, retries, monitoring, etc.
+
+#### Org Hacking:
+
+- Led a  rotation-based system to pay down technical debt.
+- Organized and launched a trial of "project-based teams" -- temporary, inter-disciplinary teams scoped to key projects.
+- Ethics Committee Member
+
+
+### Feb - July 2013, Software Engineer, Prismatic (San Francisco, CA)
+
+Built and improved a range of backend services, including topic modeling, document life-cycle, and social media integrations.
+
+### Jan 2011 - Jan 2013, Software Engineer, Etsy (New York, NY)
+
+Data-mining system to improve search ranking. (e.g. see my [Hadop World 2011 presentation](http://www.slideshare.net/abeppu/data-mining-forproductsearch))
+
+Big data tools and infrastructure:
+
+- Migrating from EMR to a Hadoop cluster on our own hardware, including a large codebase of legacy jobs
+- Breaking performance bottlenecks in our ongoing processing
+- Tooling for creating, scheduling and running workflows of jobs
+- Tooling for monitoring and error-recovery
+
+### Jun 2008 - Dec 2010, Software Development Engineer, A9.com (Palo Alto, CA)
+
+Wrote and improved jobs for large-scale click-stream analysis.
+Aggregating and reporting data about product search and search quality.
+
+
+Education
+---------
+
+2005 - 2008
+:   **BA, Cognitive Science**; UC Berkeley, Departmental Citation
+
+
+Public communications
+----------------------------------------
+
+While most of my work has not been directed at public release, here are some publicly visible artifacts:
+
+|Patent|[US10339472B2](http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=1&f=G&l=50&s1=10,339,472.PN.&OS=PN/10,339,472&RS=PN/10,339,472)|
+|Technical blog|[Models in Disguise: How Sift Science Ships Non-Disruptive Model  Changes](https://engineering.sift.com/models-disguise-sift-science-ships-non-disruptive-model-changes/)|
+|Public speaking|[Non-disruptive Model Changes](https://youtu.be/-YArBO3JJgM?t=2275)|
+|Academic publication|Beppu, Aaron & Griffiths, Thomas L. (2009). [Iterated learning and the cultural ratchet.](https://www.semanticscholar.org/paper/Iterated-Learning-and-the-Cultural-Ratchet-Beppu-Griffiths/c1b5603f6332cc5c4dceef4d7e1953c1d6f91ccb) In N. A. Taatgen & H. van Rijn (eds.), _Proceedings of the 31st Annual Conference of the Cognitive Science Society_. pp. 2089--2094.|
+
+
+
+Technologies
+--------------------
+
+**Languages I have used in production:**
+java, scala, python, clojure, javascript, php
+
+
+**libraries/frameworks/services:**
+hadoop, spark, kafka, hbase, elastic search, solr, mysql, postgres, memcached, airflow, oozie, protobuf, avro, thrift, AWS services (many), GCP services (several)
