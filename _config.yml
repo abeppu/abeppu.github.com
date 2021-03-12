@@ -29,7 +29,7 @@ github_username:  abeppu
 logo: "images/headshot.jpg"
 
 # Build settings
-theme: beautiful-jekyll-theme
+theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
 
