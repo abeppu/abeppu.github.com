@@ -4,9 +4,12 @@ title: Resume
 ---
 
 # Aaron Beppu
+I'm an experienced engineer with interests in machine learning, large-scale data analysis, data engineering, real-time systems and related product development.
 
-I'm a veteran software engineer with experience with large-scale data analysis, machine learning, data engineering, supporting infrastructure, and related product work.
 I'm seeking to bring these skills to applications which can benefit society.
+
+[Contact me](https://forms.gle/zRxxG1BxxEXeDApQ6)
+
 
 ## Experience
 
@@ -15,30 +18,31 @@ I'm seeking to bring these skills to applications which can benefit society.
 
 I have been a key contributor within engineering during a period of continued and transformative growth. During that period I have driven many of the projects underpinning that transformation. Here's a sample:
 
+#### Data hacking:
+
+- Measuring and analysing ML bias without user-level ground-truth about sensitive group membership.
+- A model calibration system which supports switching between ML models without disturbing the behavior of downstream systems which consume predictions. Simultaneously preserves specific model accuracy metrics while also matching marginal score distributions.
+- Online accuracy metrics for payment fraud. Designed analysis and implemented pipeline and reporting for tracking accuracy, in the presence of incomplete and delayed ground truth data.
+
+#### ML tooling and platfor:
+
+- Led efforts to speed up our production training pipelines while preserving semantics. Achieved up to 3x speedup.
+- Redesign of monolithic scoring service, to multiple services supporting different model versions. Supports "instant" changes to model serving based on live configuration and routing system.
 
 #### Product:
 
 - A flexible workflow automation product. Customers can describe "if X then Y else Z" conditions and automations which have access to our ML features and predictions.
 - A real-time reporting product. Customers can see up-to-the-moment reports and aggregates describing their use of our product.
 
-
-#### Data hacking:
-
-- A model calibration system which supports migrating between models while preserving marginal score distributions. This lets us change/improve models without disrupting downstream automations.
-- Designed and built jobs to track prediction accuracy over time. Designed to consider widely differing customers, and labels which may arrive months after predictions.
-
 #### Platform/Infra:
 
-- Migrated between incompatible versions of HBase, with no downtime. Involved dual-writing through all tables, backfill jobs to transform between HFile versions, and tooling to check values at a byte-level.
-- Encrypted all data at rest. Involved replacing every instance in our fleet, with new images with different FS initialization.
-- Migrated from SQS to Kafka as our primary queue. Included developing a suite of libraries to handle multi-threaded consumption, retries, monitoring, etc.
+- Several large, cross-cutting migrations: Zero-downtime migration between incompatible versions of HBase. Migration between distributed queue systems (SQS to Kafka). Encrypted all data at rest; involved replacing every instance in our fleet. Key contributor in inter-cloud migration (AWS to GCP)
 
 #### Org Hacking:
 
-- Led a  rotation-based system to pay down technical debt.
+- Led a rotation-based system to pay down technical debt.
 - Organized and launched a trial of "project-based teams" -- temporary, inter-disciplinary teams scoped to key projects.
-- Ethics Committee Member
-
+- Ethics Committee founding member.
 
 ### Feb - July 2013, Software Engineer, Prismatic (San Francisco, CA)
 

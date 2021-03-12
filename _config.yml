@@ -19,19 +19,34 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Aaron Beppu
-
+email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Aaron Beppu's personal site. Not presently a blog.
+  Aaron Beppu's personal site. Not presently a blog. 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: abeppu
 github_username:  abeppu
-logo: headshot.jpg
+logo: "images/headshot.jpg"
 
 # Build settings
-theme: jekyll-theme-minimal
+theme: beautiful-jekyll-theme
 plugins:
   - jekyll-feed
+
+avatar: "images/headshot.jpg"
+round-avatar: true
+
+
+navbar-col: "#EAEAEA"
+navbar-text-col: "#404040"
+navbar-border-col: "#DDDDDD"
+page-col: "#FFFFFF"
+text-col: "#404040"
+link-col: "#008AFF"
+hover-col: "#0085A1"
+footer-col: "#EAEAEA"
+footer-text-col: "#777777"
+footer-link-col: "#404040"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
