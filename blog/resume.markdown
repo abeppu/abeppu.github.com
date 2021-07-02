@@ -14,7 +14,7 @@ I'm seeking to bring these skills to applications which can benefit society.
 ## Experience
 
 
-### 2013 - Now, Sr to Principal Engineer, Sift (San Francisco, CA)
+### 2013 - 2021, Sr to Principal Engineer, Sift (San Francisco, CA)
 
 I have been a key contributor within engineering during a period of continued and transformative growth. During that period I have driven many of the projects underpinning that transformation. Here's a sample:
 
@@ -24,7 +24,7 @@ I have been a key contributor within engineering during a period of continued an
 - A model calibration system which supports switching between ML models without disturbing the behavior of downstream systems which consume predictions. Simultaneously preserves specific model accuracy metrics while also matching marginal score distributions.
 - Online accuracy metrics for payment fraud. Designed analysis and implemented pipeline and reporting for tracking accuracy, in the presence of incomplete and delayed ground truth data.
 
-#### ML tooling and platfor:
+#### ML tooling and platform:
 
 - Led efforts to speed up our production training pipelines while preserving semantics. Achieved up to 3x speedup.
 - Redesign of monolithic scoring service, to multiple services supporting different model versions. Supports "instant" changes to model serving based on live configuration and routing system.
